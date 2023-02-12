@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>italian citizenship speedrun</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<style>
+	.infoCard {
+    	color: black;
+        border-color: green;
+        border-style: solid;
+        border-width: 3px;
+        padding: 10px;
+        width: 200px;
+        display: inline-block;
+        border-radius: 10px;
+        background-color: pink;
+    }
+</style>
+</head>
+<body>
+
+<h1 style="background-color: red;">Welcome, Italian</h1>
+<p>Let's see if you can mama mia ur way into Italy</p>
+
+<button type="button">Add Immigrant Ancestors</button>
+<br>
+<br>
+<div class="ancestorSection">
+<!--<form action="/action_page.php" class="infoCard">
+  <p class="name">New Ancestor Card</p>
+  <label for="fname">First name:</label><br>
+  <input type="text" id="fname" name="fname"><br>
+  <label for="lname">Last name:</label><br>
+  <input type="text" id="lname" name="lname"><br>
+  <label for="birthday">Birthday:</label><br>
+  <input type="date" id="birthday" name="birthday"><br><br>
+  <input type="button" value="Save">
+</form>--> 
+</div>
+<script>
+$(document).ready(function() {
+  $("button").click(function() {
+    $(".ancestorSection").append(`
+      <form action="/action_page.php" class="infoCard">
+        <p class="name">New Ancestor Card</p>
+        
+        <label for="fname">First name:</label><br>
+        <input type="text" id="fname" name="fname"><br>
+        
+        <label for="lname">Last name:</label><br>
+        <input type="text" id="lname" name="lname"><br>
+        
+        <p>Sex:</p>
+        <input type="radio" id="male" name="sex" value="Male">
+  		<label for="male">Male</label><br>
+  		<input type="radio" id="female" name="sex" value="Female">
+  		<label for="female">Female</label><br><br>
+        
+        <label for="town">Birth Town/Providence/etc:</label><br>
+        <input type="text" id="town" name="town"><br>
+        
+        <label for="country">Country:</label><br>
+        <input type="text" id="country" name="country"><br>
+        
+        <label for="birthday">Birthday:</label><br>
+        <input type="date" id="birthday" name="birthday"><br><br>
+
+        <input type="button" value="Save" class="saveancestor">
+      </form>
+    `);
+  });
+  $(".ancestorSection").on("click", ".saveancestor", function() {
+    var fname = $(this).closest("form").find("#fname").val();
+    var lname = $(this).closest("form").find("#lname").val();
+    $(this).closest("form").find(".name").text(fname + " " + lname);
+  });
+  
+  $(".ancestorSection").on("click", ".saveancestor", function() {
+    var fname = $(this).closest("form").find("#fname").val();
+    var lname = $(this).closest("form").find("#lname").val();
+    
+    var town = $(this).closest("form").find("#town").val();
+    var country = $(this).closest("form").find("#country").val();
+    
+    var birthday = $(this).closest("form").find("#birthday").val();
+    
+    const myBirthdayArray = birthday.split("-");
+    let year = myBirthdayArray[0];
+    let month = myBirthdayArray[1];
+    let day = myBirthdayArray[2];
+
+    $(this).closest("form").find(".name").text(fname + " " + lname);
+    
+    if (fname && lname && town && country == "Italy" && parseInt(year) > 1861) {
+      $(this).closest(".infoCard").css({"background-color": "green"});
+    } else {
+      $(this).closest(".infoCard").css({"background-color": "red"});
+    }
+  });
+});
+</script>
+</body>
+</html>
