@@ -89,13 +89,13 @@ $(document).ready(function() {
   });
   
   $(".ancestorSection").on("click", "#no", function() {
-    $("#relationship").show( "slow", function() {
+    $(this).closest("form").find("#relationship").show( "slow", function() {
     	// Animation complete.
   	});
   });
   
   $(".ancestorSection").on("click", "#yes", function() {
-    $("#relationship").hide( "slow", function() {
+    $(this).closest("form").find("#relationship").hide( "slow", function() {
     	// Animation complete.
   	});
   });
