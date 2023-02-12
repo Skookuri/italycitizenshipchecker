@@ -63,12 +63,44 @@ $(document).ready(function() {
         <input type="text" id="country" name="country"><br>
         
         <label for="birthday">Birthday:</label><br>
-        <input type="date" id="birthday" name="birthday"><br><br>
+        <input type="date" id="birthday" name="birthday"><br>
+        
+        <p>Is this you? (Potential citizenship applicant)</p>
+        <input type="radio" id="yes" name="you" value="Yes">
+  		<label for="yes">Yes</label><br>
+  		<input type="radio" id="no" name="you" value="no">
+  		<label for="no">No</label><br><br>
+        
+        <div id="relationship" style="display: none">
+        <label for="relation">What ancestral relation to you:</label>
+        <select name="relation" id="relation">
+        	<option value="parent">Parent</option>
+        	<option value="grandparent">Grandparent</option>
+        	<option value="greatgrandparent">Great grandparent</option>
+        	<option value="distant">Distant relative</option>
+        </select>
+        <br><br>
+        </div>
+        
 
         <input type="button" value="Save" class="saveancestor">
       </form>
     `);
   });
+  
+  $(".ancestorSection").on("click", "#no", function() {
+    $("#relationship").show( "slow", function() {
+    	// Animation complete.
+  	});
+  });
+  
+  $(".ancestorSection").on("click", "#yes", function() {
+    $("#relationship").hide( "slow", function() {
+    	// Animation complete.
+  	});
+  });
+  
+  
   $(".ancestorSection").on("click", ".saveancestor", function() {
     var fname = $(this).closest("form").find("#fname").val();
     var lname = $(this).closest("form").find("#lname").val();
@@ -84,6 +116,8 @@ $(document).ready(function() {
     
     var birthday = $(this).closest("form").find("#birthday").val();
     
+    //if radio button no selected for Is this you? >> display another form option that has selector for relation (Parent, Grandparent, Great grandparent, Great great grandparent)
+    
     const myBirthdayArray = birthday.split("-");
     let year = myBirthdayArray[0];
     let month = myBirthdayArray[1];
@@ -96,6 +130,7 @@ $(document).ready(function() {
     } else {
       $(this).closest(".infoCard").css({"background-color": "red"});
     }
+    
   });
 });
 </script>
