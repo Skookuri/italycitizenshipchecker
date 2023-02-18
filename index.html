@@ -5,12 +5,27 @@
 <link rel="icon" type="image/x-icon" href="https://static.vecteezy.com/system/resources/previews/011/571/348/non_2x/circle-flag-of-italy-free-png.png">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <style>
-	html {
+    html {
   		scroll-behavior: smooth;
+        
 	}
     
 	body {
     	color: #6495ED;
+        margin: 0;
+    }
+    
+    img {
+    	position: fixed;
+        
+        z-index: -100;
+        height: 150%;
+        margin: 0;
+        padding: 0;
+        opacity: 0.2;
+        transform: translate(0%, -50%);
+
+        
     }
     
     .infoCard {
@@ -60,23 +75,7 @@
         transition: 0.4s;
     }
     
-    .translated {
-    	display: none;
-        color: #9FE2BF;
-        font-style: italic;
-        padding: 10px;
-        background-color: #6495ED
-        border-radius: 67px 67px 67px 67px;
-		-webkit-border-radius: 67px 67px 67px 67px;
-		-moz-border-radius: 67px 67px 67px 67px;
-        box-shadow: -3px 10px 33px -21px rgba(0,0,0,0.9) inset;
-		-webkit-box-shadow: -3px 10px 33px -21px rgba(0,0,0,0.9) inset;
-		-moz-box-shadow: -3px 10px 33px -21px rgba(0,0,0,0.9) inset;
-        width: 150px;
-        margin-left: auto;
-        margin-right: auto;
-        
-    }
+
     
     section {
     	width: 100%;
@@ -366,9 +365,9 @@
 
 
 <div class="greeting">
-<h1 style="font-size: 100px;" class="content default totranslate">Welcome, Italian</h1>
-<h1 class="content translated">Hello!</h1>
+<h1 style="font-size: 100px;" class="content default">Welcome, Italian</h1>
 </div>
+<img src="https://64.media.tumblr.com/05987b3a3cf70eddd42f83222a9a4c3e/58af415a188aab02-1f/s540x810/145b8daad56b7f2ac9b0ffd9fba616e8f2ef8945.gif"> 
 <h2 style="font-size: 25px;" class="content default">Let's see if you can mama mia ur way into Italy</h2>
 
 <div class="mouse_scroll default">
