@@ -5,90 +5,561 @@
 <link rel="icon" type="image/x-icon" href="https://static.vecteezy.com/system/resources/previews/011/571/348/non_2x/circle-flag-of-italy-free-png.png">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <style>
-	.infoCard {
-    	color: black;
-        border-color: green;
-        border-style: solid;
-        border-width: 3px;
-        padding: 10px;
-        width: 200px;
-        display: inline-block;
-        border-radius: 10px;
-        background-color: pink;
+	html {
+  		scroll-behavior: smooth;
+	}
+    
+	body {
+    	color: #6495ED;
     }
+    
+    .content {
+    	text-align: center;
+    	left: 50%;
+    	transform: translate(0%, 50%);
+    }
+    
+    a {
+    	color: #6495ED;
+        padding: 10px;
+    }
+    
+    .topBar {
+    	padding: 20px;
+    	text-align: center;
+    	font-size: 25px;
+    	color: #ffffff;
+	}
+    
+
+	a:hover {
+    	color: #522c8a;
+    	transition: 0.4s;
+        text-shadow: 0 0 30px #ffff;
+	}
+      
+	.topBar a.active {
+    	color: #522c8a;
+        text-shadow: 0 0 30px #ffff;
+	}
+    
+    .totranslate:hover {
+    	color: #9FE2BF;
+        cursor: pointer;
+        transition: 0.4s;
+    }
+    
+    .translated {
+    	display: none;
+        color: #9FE2BF;
+        font-style: italic;
+        padding: 10px;
+        background-color: #6495ED
+        border-radius: 67px 67px 67px 67px;
+		-webkit-border-radius: 67px 67px 67px 67px;
+		-moz-border-radius: 67px 67px 67px 67px;
+        box-shadow: -3px 10px 33px -21px rgba(0,0,0,0.9) inset;
+		-webkit-box-shadow: -3px 10px 33px -21px rgba(0,0,0,0.9) inset;
+		-moz-box-shadow: -3px 10px 33px -21px rgba(0,0,0,0.9) inset;
+        width: 150px;
+        margin-left: auto;
+        margin-right: auto;
+        
+    }
+    
+    section {
+    	width: 100%;
+        box-sizing: border-box;
+        height: 100vh;
+    }
+    
+    #ancestor {
+    	background-color: #6495ED;
+        height: 200vh;
+    }
+    
+    #dialects {
+    	/*background-color: #522c8a;*/
+    }
+    
+    #learn {
+    	background-color: #9FE2BF;
+    }
+    
+    #team {
+    	background-color: white;
+    }
+
+   	/*mouse stuff below*/
+    *, *:before, *:after {
+  		-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+ 	}
+
+
+	.mouse_scroll {
+		display: block;
+		margin: 0 auto;
+		width: 24px;
+		height: 100px;
+		margin-top: 125px;
+	}
+
+
+	.m_scroll_arrows {
+  		display: block;
+  		width: 5px;
+  		height: 5px;
+  		-ms-transform: rotate(45deg); /* IE 9 */
+  		-webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+  		transform: rotate(45deg);
+   
+  		border-right: 2px solid #203c34;
+  		border-bottom: 2px solid #203c34;
+  		margin: 0 0 3px 4px;
+  
+  		width: 16px;
+  		height: 16px;
+	}
+
+
+	.unu {
+  		margin-top: 1px;
+	}
+
+	.unu, .doi, .trei {
+    	-webkit-animation: mouse-scroll 1s infinite;
+    	-moz-animation: mouse-scroll 1s infinite;
+    	animation: mouse-scroll 1s infinite;
+	}
+
+.unu
+{
+  -webkit-animation-delay: .1s;
+  -moz-animation-delay: .1s;
+  -webkit-animation-direction: alternate;
+  
+  animation-direction: alternate;
+  animation-delay: alternate;
+}
+
+.doi
+{
+  -webkit-animation-delay: .2s;
+  -moz-animation-delay: .2s;
+  -webkit-animation-direction: alternate;
+  
+  animation-delay: .2s;
+  animation-direction: alternate;
+  
+  margin-top: -6px;
+}
+
+.trei
+{
+  -webkit-animation-delay: .3s;
+  -moz-animation-delay: .3s;
+  -webkit-animation-direction: alternate;
+  
+  animation-delay: .3s;
+  animation-direction: alternate;
+  
+  
+  margin-top: -6px;
+}
+
+.mouse {
+  height: 42px;
+  width: 24px;
+  border-radius: 14px;
+  transform: none;
+  border: 2px solid #203c34;
+  top: 170px;
+}
+
+.wheel {
+  height: 5px;
+  width: 2px;
+  display: block;
+  margin: 5px auto;
+  background: white;
+  position: relative;
+  
+  height: 4px;
+  width: 4px;
+  border: 2px solid #203c34;
+  -webkit-border-radius: 8px;
+          border-radius: 8px;
+}
+
+.wheel {
+  -webkit-animation: mouse-wheel 1s linear infinite;
+  -moz-animation: mouse-wheel 1s linear infinite;
+  animation: mouse-wheel 1s linear infinite;
+}
+
+@-webkit-keyframes mouse-wheel{
+   0% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(6px);
+    -ms-transform: translateY(6px);
+    transform: translateY(6px);
+  }
+}
+@-moz-keyframes mouse-wheel {
+  0% { top: 1px; }
+  25% { top: 2px; }
+  50% { top: 3px;}
+  75% { top: 2px;}
+  100% { top: 1px;}
+}
+@-o-keyframes mouse-wheel {
+
+   0% { top: 1px; }
+  25% { top: 2px; }
+  50% { top: 3px;}
+  75% { top: 2px;}
+  100% { top: 1px;}
+}
+@keyframes mouse-wheel {
+
+   0% { top: 1px; }
+  25% { top: 2px; }
+  50% { top: 3px;}
+  75% { top: 2px;}
+  100% { top: 1px;}
+}
+
+@-webkit-keyframes mouse-scroll {
+
+  0%   { opacity: 0;}
+  50%  { opacity: .5;}
+  100% { opacity: 1;}
+}
+@-moz-keyframes mouse-scroll {
+
+  0%   { opacity: 0; }
+  50%  { opacity: .5; }
+  100% { opacity: 1; }
+}
+@-o-keyframes mouse-scroll {
+
+  0%   { opacity: 0; }
+  50%  { opacity: .5; }
+  100% { opacity: 1; }
+}
+@keyframes mouse-scroll {
+
+  0%   { opacity: 0; }
+  50%  { opacity: .5; }
+  100% { opacity: 1; }
+}
+
+/*responsive stuff*/
+
+@media screen and (max-width: 250px) {
+  #ancestor {
+    height: 300vh;
+  }
+}
+@media screen and (min-width: 250px) and (max-width: 340px) {
+  #ancestor {
+    height: 260vh;
+  }
+}
+
+@media screen and (min-width: 341px) and (max-width: 375px) {
+  #ancestor {
+    height: 240vh;
+  }
+}
+
+@media screen and (min-width: 376px) and (max-width: 424px) {
+  #ancestor {
+    height: 230vh;
+  }
+}
+
+@media screen and (min-width: 425px) and (max-width: 514px) {
+  #ancestor {
+    height: 215vh;
+  }
+}
+
+@media screen and (min-width: 515px) and (max-width: 525px) {
+  #ancestor {
+    height: 210vh;
+  }
+}
+
+@media screen and (min-width: 526px) and (max-width: 650px) {
+  #ancestor {
+    height: 200vh;
+  }
+}
+
+@media screen and (min-width: 651px) and (max-width: 690px) {
+  #ancestor {
+    height: 190vh;
+  }
+}
+
+@media screen and (min-width: 691px) and (max-width: 785px) {
+  #ancestor {
+    height: 180vh;
+  }
+}
+
+@media screen and (min-width: 785px) and (max-width: 800px) {
+  #ancestor {
+    height: 175vh;
+  }
+}
+
+@media screen and (min-width: 801px) and (max-width: 999px) {
+  #history {
+    height: 170vh;
+  }
+}
+
+@media screen and (min-width: 1000px) and (max-width: 1336px) {
+  #ancestor {
+    height: 165vh;
+  }
+}
+
+@media screen and (min-width: 1337px) {
+  #ancestor {
+    height: 160vh;
+  }
+}
 </style>
 </head>
 <body>
-
-<h1 style="background-color: red;">Welcome, Italian</h1>
-<p>Let's see if you can mama mia ur way into Italy</p>
-
-<button type="button">Add Immigrant Ancestors</button>
-<br>
-<br>
-<div class="ancestorSection">
-<!--<form action="/action_page.php" class="infoCard">
-  <p class="name">New Ancestor Card</p>
-  <label for="fname">First name:</label><br>
-  <input type="text" id="fname" name="fname"><br>
-  <label for="lname">Last name:</label><br>
-  <input type="text" id="lname" name="lname"><br>
-  <label for="birthday">Birthday:</label><br>
-  <input type="date" id="birthday" name="birthday"><br><br>
-  <input type="button" value="Save">
-</form>--> 
+<section id="home">
+<h2>
+<div class="topBar">
+    <a href= "#home" style="text-decoration: none;" class = "page active" >Home</a>
+	<a href= "#ancestor" style="text-decoration: none;" class = "page" >Ancestor</a>
+	<a href= "#dialects" style="text-decoration: none;" class = "page" >Dialects</a>
+	<a href= "#learn" style="text-decoration: none;" class = "page" >Learn</a>
+	<a href= "#team" style="text-decoration: none;" class = "page" >Team</a>
 </div>
-<script>
-$(document).ready(function() {
-  $("button").click(function() {
-    $(".ancestorSection").append(`
-      <form action="/action_page.php" class="infoCard">
-        <p class="name">New Ancestor Card</p>
-        
-        <label for="fname">First name:</label><br>
-        <input type="text" id="fname" name="fname"><br>
-        
-        <label for="lname">Last name:</label><br>
-        <input type="text" id="lname" name="lname"><br>
-        
-        <p>Sex:</p>
-        <input type="radio" id="male" name="sex" value="Male">
-  		<label for="male">Male</label><br>
-  		<input type="radio" id="female" name="sex" value="Female">
-  		<label for="female">Female</label><br><br>
-        
-        <label for="town">Birth Town/Providence/etc:</label><br>
-        <input type="text" id="town" name="town"><br>
-        
-        <label for="country">Country:</label><br>
-        <input type="text" id="country" name="country"><br>
-        
-        <label for="birthday">Birthday:</label><br>
-        <input type="date" id="birthday" name="birthday"><br>
-        
-        <p>Is this you? (Potential citizenship applicant)</p>
-        <input type="radio" id="yes" name="you" value="Yes">
-  		<label for="yes">Yes</label><br>
-  		<input type="radio" id="no" name="you" value="no">
-  		<label for="no">No</label><br><br>
-        
-        <div id="relationship" style="display: none">
-        <label for="relation">What ancestral relation to you:</label>
+</h2>
+
+
+<div class="greeting">
+<h1 style="font-size: 100px;" class="content default totranslate">Welcome, Italian</h1>
+<h1 class="content translated">Hello!</h1>
+</div>
+<h2 style="font-size: 25px;" class="content default">Let's see if you can mama mia ur way into Italy</h2>
+
+<div class="mouse_scroll default">
+	<div class="mouse">
+		<div class="wheel"></div>
+	</div>
+	<div>
+		<span class="m_scroll_arrows unu"></span>
+		<span class="m_scroll_arrows doi"></span>
+		<span class="m_scroll_arrows trei"></span>
+	</div>
+</div>
+</section>
+
+
+
+<section id="ancestor">
+<br>
+<h4 style="color: white; font-size: 70px; margin-left: 2%; margin-right: 2%">
+
+  <p>
+  <span>Enter</span>
+  <span>An</span>
+  <span>Ancestor</span>
+  <span>Who</span>
+  <span>Immigrated</span>
+  <span>From</span>
+  <span>Italy:</span>
+  </p>
+  
+  <span style="font-size: 25px; font-weight: normal;">
+  <div class="ancestorSection">
+  <form action="/action_page.php" class="infoCard">
+  	<label for="fname">First name:</label><br>
+    <input type="text" id="fname" name="fname"><br>
+      
+    <label for="lname">Last name:</label><br>
+    <input type="text" id="lname" name="lname"><br>
+      
+    <p>Sex:</p>
+    <input type="radio" id="male" name="sex" value="Male">
+    <label for="male">Male</label>
+    <input type="radio" id="female" name="sex" value="Female">
+    <label for="female">Female</label><br><br>
+      
+    <label for="town">Birth Town/Providence/etc:</label><br>
+    <input type="text" id="town" name="town"><br>
+      
+    <label for="country">Country:</label><br>
+    <input type="text" id="country" name="country"><br>
+      
+    <label for="birthday">Birthday:</label><br>
+    <input type="date" id="birthday" name="birthday"><br><br>
+      
+    <label for="naturalization">Naturalization Date:</label><br>
+    <input type="date" id="naturalization" name="naturalization"><br>
+      
+    <p>Is this you? (Potential citizenship applicant)</p>
+    <input type="radio" id="yes" name="you" value="Yes">
+    <label for="yes">Yes</label><br>
+    <input type="radio" id="no" name="you" value="no">
+    <label for="no">No</label><br><br>
+      
+    <div id="relationship" style="display: none">
+    	<label for="relation">What ancestral relation to you:</label>
         <select name="relation" id="relation">
         	<option value="parent">Parent</option>
-        	<option value="grandparent">Grandparent</option>
-        	<option value="greatgrandparent">Great grandparent</option>
-        	<option value="distant">Distant relative</option>
+            <option value="grandparent">Grandparent</option>
+            <option value="greatgrandparent">Great grandparent</option>
+            <option value="distant">Distant relative</option>
         </select>
         <br><br>
-        </div>
-        
+    </div>
+   	<input type="button" value="Save" class="saveancestor">
+  </form>
+  </div>
+  </span>
+</h4>
+</section>
 
-        <input type="button" value="Save" class="saveancestor">
-      </form>
-    `);
-  });
-  
+
+
+<section id="dialects"><h1>ee</h1></section>
+
+
+
+<section id="learn"><h1>ee</h1></section>
+
+
+
+<section id="team"><h1>ee</h1></section>
+
+
+<script>
+var historyanimate = `
+    /*history section animation*/
+    h4 {
+  		font-family: "Montserrat Medium";
+  		max-width: 40ch;
+  		text-align: center;
+  		transform: scale(0.94) translate(0%, 50%);
+  		animation: scale 3s forwards cubic-bezier(0.5, 1, 0.89, 1);
+	}
+	
+    @keyframes scale {
+  		100% {
+    		transform: scale(1);
+  		}
+	}
+	span {
+  		display: inline-block;
+  		opacity: 0;
+  		filter: blur(4px);
+	}
+	span:nth-child(1) {
+  	animation: fade-in 0.8s 0.1s forwards cubic-bezier(0.11, 0, 0.5, 0);
+	}
+	span:nth-child(2) {
+  animation: fade-in 0.8s 0.2s forwards cubic-bezier(0.11, 0, 0.5, 0);
+	}
+	span:nth-child(3) {
+  animation: fade-in 0.8s 0.3s forwards cubic-bezier(0.11, 0, 0.5, 0);
+	}
+	span:nth-child(4) {
+  animation: fade-in 0.8s 0.4s forwards cubic-bezier(0.11, 0, 0.5, 0);
+	}
+	span:nth-child(5) {
+  	animation: fade-in 0.8s 0.5s forwards cubic-bezier(0.11, 0, 0.5, 0);
+	}
+	span:nth-child(6) {
+  animation: fade-in 0.8s 0.6s forwards cubic-bezier(0.11, 0, 0.5, 0);
+	}
+	span:nth-child(7) {
+  animation: fade-in 0.8s 0.7s forwards cubic-bezier(0.11, 0, 0.5, 0);
+	}
+span:nth-child(8) {
+  animation: fade-in 0.8s 0.8s forwards cubic-bezier(0.11, 0, 0.5, 0);
+}
+span:nth-child(9) {
+  animation: fade-in 0.8s 0.9s forwards cubic-bezier(0.11, 0, 0.5, 0);
+}
+span:nth-child(10) {
+  animation: fade-in 0.8s 1s forwards cubic-bezier(0.11, 0, 0.5, 0);
+}
+span:nth-child(11) {
+  animation: fade-in 0.8s 1.1s forwards cubic-bezier(0.11, 0, 0.5, 0);
+}
+span:nth-child(12) {
+  animation: fade-in 0.8s 1.2s forwards cubic-bezier(0.11, 0, 0.5, 0);
+}
+/*span:nth-child(13) {
+  animation: fade-in 0.8s 1.3s forwards cubic-bezier(0.11, 0, 0.5, 0);
+}
+span:nth-child(14) {
+  animation: fade-in 0.8s 1.4s forwards cubic-bezier(0.11, 0, 0.5, 0);
+}
+span:nth-child(15) {
+  animation: fade-in 0.8s 1.5s forwards cubic-bezier(0.11, 0, 0.5, 0);
+}
+span:nth-child(16) {
+  animation: fade-in 0.8s 1.6s forwards cubic-bezier(0.11, 0, 0.5, 0);
+}
+span:nth-child(17) {
+  animation: fade-in 0.8s 1.7s forwards cubic-bezier(0.11, 0, 0.5, 0);
+}
+span:nth-child(18) {
+  animation: fade-in 0.8s 1.8s forwards cubic-bezier(0.11, 0, 0.5, 0);
+}*/
+	@keyframes fade-in {
+  		100% {
+    		opacity: 1;
+    		filter: blur(0);
+  		}
+	}
+`
+$(document).ready(function() {
+	$(".default").hide();
+    $(".default").fadeIn(2200);
+    $("h4").hide();
+    
+    $(".totranslate").click(function() {
+    	$(this).next().stop(true, true);
+    	$(this).next().slideToggle();
+    });
+    
+    $(document).scroll(function() {
+  		var y = $(this).scrollTop();
+  		if (y > 300) {
+    		var historystyle = document.createElement("style");
+            historystyle.innerText = historyanimate;
+            document.head.appendChild(historystyle);
+            $('h4').fadeIn();
+  		} else {
+    		$('h4').fadeOut();
+            $(".translated").hide();
+  		}
+	});
+});
+</script>
+
+<script>
+$(document).ready(function() {
   $(".ancestorSection").on("click", "#no", function() {
     $(this).closest("form").find("#relationship").show( "slow", function() {
     	// Animation complete.
@@ -117,16 +588,23 @@ $(document).ready(function() {
     
     var birthday = $(this).closest("form").find("#birthday").val();
     
+    var naturalization = $(this).closest("form").find("#naturalization").val();
+    
     //if radio button no selected for Is this you? >> display another form option that has selector for relation (Parent, Grandparent, Great grandparent, Great great grandparent)
     
     const myBirthdayArray = birthday.split("-");
-    let year = myBirthdayArray[0];
-    let month = myBirthdayArray[1];
-    let day = myBirthdayArray[2];
+    let yearobirth = myBirthdayArray[0];
+    let monthobirth = myBirthdayArray[1];
+    let dayobirth = myBirthdayArray[2];
+    
+    const myNaturalizationArray = naturalization.split("-");
+    let yearonat = myNaturalizationArray[0];
+    let monthonat = myNaturalizationArray[1];
+    let dayonat = myNaturalizationArray[2];
 
     $(this).closest("form").find(".name").text(fname + " " + lname);
     
-    if (fname && lname && town && country == "Italy" && parseInt(year) > 1861) {
+    if (fname && lname && town && country == "Italy" && parseInt(yearobirth) > 1861 && parseInt(yearonat) > 1912) {
       $(this).closest(".infoCard").css({"background-color": "green"});
     } else {
       $(this).closest(".infoCard").css({"background-color": "red"});
