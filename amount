@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>italian citizenship speedrun</title>
+	<link rel="icon" type="image/x-icon" href="https://static.vecteezy.com/system/resources/previews/011/571/348/non_2x/circle-flag-of-italy-free-png.png">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+	<style>
+		@font-face {
+    			font-family: 'Restrain';
+    			src: url('Restrain-Regular.ttf') format('opentype');
+    			font-weight: normal;
+    			font-style: normal;
+		}
+		body {
+			font-family: 'Restrain', sans-serif;
+			background-color: pink;
+			color: white;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+			margin: 0;
+			padding: 0;
+            text-align: center;
+		}
+		
+		.Question {
+			position: relative;
+			z-index: 1;
+			opacity: 0;
+			animation: fadeIn 2s ease-in-out forwards, riseUp 1.5s ease-in-out forwards 1s;
+            max-width: 80%;
+		}
+		
+		.Answer {
+			margin-top: 20px;
+			padding: 10px 20px;
+			background-color: black;
+			color: white;
+			cursor: pointer;
+            opacity: 0;
+        	animation: fadeIn 2s ease-in-out forwards;
+			animation-delay: 2s;
+		}
+		
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+			}
+			to {
+				opacity: 1;
+			}
+		}
+		
+		@keyframes riseUp {
+			from {
+				transform: translateY(0);
+			}
+			to {
+				transform: translateY(-30%);
+			}
+		}
+	</style>
+</head>
+<body>
+	<h1 class="Question">Do you have a known Italian ancestor?</h1>
+	<button class="Answer">Yes</button>
+	<button class="Answer">No</button>
+</body>
+</html>
