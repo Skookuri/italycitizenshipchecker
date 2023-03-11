@@ -65,7 +65,14 @@
 </head>
 <body>
 	<h1 class="Question">Do you have a known Italian ancestor?</h1>
-	<button class="Answer">Yes</button>
-	<button class="Answer">No</button>
+	<button class="Answer" id="yes-btn">Yes</button>
+	<button class="Answer" id="no-btn">No</button>
 </body>
+<script>
+$(document).ready(function(){
+  $("#yes-btn").click(function(){
+    window.location.href='/amount';
+  });
+});
+</script>
 </html>
