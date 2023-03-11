@@ -13,7 +13,7 @@
 		}
 		body {
 			font-family: 'Restrain', sans-serif;
-			background-color: pink;
+			background-color: black;
 			color: white;
 			display: flex;
 			flex-direction: column;
@@ -64,8 +64,13 @@
 	</style>
 </head>
 <body>
-	<h1 class="Question">Do you have a known Italian ancestor?</h1>
-	<button class="Answer">Yes</button>
-	<button class="Answer">No</button>
+	<h1 class="Question">How Many Do You Have?</h1>
 </body>
+<script>
+$(document).ready(function(){
+  $("#yes-btn").click(function(){
+    window.location.href='amount';
+  });
+});
+</script>
 </html>
