@@ -64,9 +64,12 @@
         
         .Card:hover {
         	background-color: blue;
-            bottom: 0.5em;
-            transition: 0.5s;
+            transition: 0.3s;
         }
+        
+        .Card.card-bottom {
+  			bottom: 0.5em;
+		}
         
 
 		.Card:last-child {
@@ -136,7 +139,9 @@ $(document).ready(function(){
     horizontalOffset += offsetIncrement;
   });
   
-
+  $(".Answer").on("click", ".Card", function() {
+    $(this).toggleClass("card-bottom");
+  });
 });
 </script>
 </html>
