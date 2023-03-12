@@ -11,6 +11,7 @@
     			font-weight: normal;
     			font-style: normal;
 		}
+        
 		body {
 			
 			background-color: black;
@@ -24,6 +25,10 @@
 			padding: 0;
             text-align: center;
 		}
+        
+        button {
+        	margin-right: 5px;
+        }
 		
 		.Question {
         	font-family: 'Restrain', sans-serif;
@@ -137,10 +142,11 @@ $(document).ready(function(){
     var cardtrans2 = 0.9 - 0.4*[ancestorcount-1];
 
     // Add the horizontal offset to the transform property
-    $(".Answer").append('<div class="Card" style="transform: translate(' + (cardtrans1 + horizontalOffset) + 'em, ' + cardtrans2 + 'em) rotate(' + carddegree + 'deg)"><button class="move">Raise</button><br><div class="name">Ancestor ' + ancestorcount + '</div><br><label for="fname">First name:</label><br><input type="text" id="fname" name="fname"><br><label for="lname">Last name:</label><br><input type="text" id="lname" name="lname"><br><br><button class="save">Save</button></div>');
+    $(".Answer").append('<div class="Card" style="transform: translate(' + (cardtrans1 + horizontalOffset) + 'em, ' + cardtrans2 + 'em) rotate(' + carddegree + 'deg)"><button class="move">Raise</button><br><div class="name">Ancestor ' + ancestorcount + '</div><br><label for="fname">First name:</label><br><input type="text" id="fname" name="fname"><br><label for="lname">Last name:</label><br><input type="text" id="lname" name="lname"><br><br><button class="back">Back</button><button class="next">Next</button></div>');
     
     // Increment the horizontal offset by the fixed amount
     horizontalOffset += offsetIncrement;
+    $(".back").hide(); // Hide the Back button initially
   });
   
   $(".Answer").on("click", ".move", function() {
@@ -150,7 +156,7 @@ $(document).ready(function(){
     $(this).parent().toggleClass("card-bottom");
   });
   
-  $(".Answer").on("click", ".save", function() {
+  $(".Answer").on("click", ".next", function() {
     var firstName = $(this).parent().find("#fname").val();
     var lastName = $(this).parent().find("#lname").val();
     if (firstName !== "" && lastName !== "") {
@@ -160,7 +166,17 @@ $(document).ready(function(){
       $(this).parent().find("#lname").hide();
       $(this).parent().find("label[for=fname]").hide();
       $(this).parent().find("label[for=lname]").hide();
+      $(this).parent().find(".back").show();
     }
+  });
+  
+  $(".Answer").on("click", ".back", function() {
+  	$(this).hide();
+    $(this).parent().find("#fname").show();
+    $(this).parent().find("#lname").show();
+    $(this).parent().find("label[for=fname]").show();
+    $(this).parent().find("label[for=lname]").show();
+    $(this).parent().find(".next").prop("disabled", false).text("Next");
   });
 });
 </script>
