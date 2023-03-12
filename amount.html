@@ -156,6 +156,10 @@ $(document).ready(function(){
     if (firstName !== "" && lastName !== "") {
       $(this).parent().find(".name").html(firstName + " " + lastName);
       $(this).prop("disabled", true).text("Saved");
+      $(this).parent().find("#fname").hide();
+      $(this).parent().find("#lname").hide();
+      $(this).parent().find("label[for=fname]").hide();
+      $(this).parent().find("label[for=lname]").hide();
     }
   });
 });
