@@ -142,11 +142,12 @@ $(document).ready(function(){
     var cardtrans2 = 0.9 - 0.4*[ancestorcount-1];
 
     // Add the horizontal offset to the transform property
-    $(".Answer").append('<div class="Card" style="transform: translate(' + (cardtrans1 + horizontalOffset) + 'em, ' + cardtrans2 + 'em) rotate(' + carddegree + 'deg)"><button class="move">Raise</button><br><div class="name">Ancestor ' + ancestorcount + '</div><br><label for="fname">First name:</label><br><input type="text" id="fname" name="fname"><br><label for="lname">Last name:</label><br><input type="text" id="lname" name="lname"><br><br><button class="back">Back</button><button class="next">Next</button></div>');
+    $(".Answer").append('<div class="Card" style="transform: translate(' + (cardtrans1 + horizontalOffset) + 'em, ' + cardtrans2 + 'em) rotate(' + carddegree + 'deg)"><button class="move">Raise</button><br><div class="name">Ancestor ' + ancestorcount + '</div><br><div class="page1"><label for="fname">First name:</label><br><input type="text" id="fname" name="fname"><br><label for="lname">Last name:</label><br><input type="text" id="lname" name="lname"></div><div class="page2"><label>Sex:</label><input type="radio" id="male" name="sex" value="Male"><label for="male">Male</label><input type="radio" id="female" name="sex" value="Female"><label for="female">Female</label><br><br><label for="town">Birth Town/Providence/etc:</label><br><input type="text" id="town" name="town"><br><label for="country">Country:</label><br><input type="text" id="country" name="country"><br><label for="birthday">Birthday:</label><br><input type="date" id="birthday" name="birthday"><br><br><label for="naturalization">Naturalization Date:</label><br><input type="date" id="naturalization" name="naturalization"></div><br><br><button class="back">Back</button><button class="next">Next</button><br></div>');
     
     // Increment the horizontal offset by the fixed amount
     horizontalOffset += offsetIncrement;
     $(".back").hide(); // Hide the Back button initially
+    $(".page2").hide();
   });
   
   $(".Answer").on("click", ".move", function() {
@@ -162,20 +163,17 @@ $(document).ready(function(){
     if (firstName !== "" && lastName !== "") {
       $(this).parent().find(".name").html(firstName + " " + lastName);
       $(this).prop("disabled", true).text("Saved");
-      $(this).parent().find("#fname").hide();
-      $(this).parent().find("#lname").hide();
-      $(this).parent().find("label[for=fname]").hide();
-      $(this).parent().find("label[for=lname]").hide();
+      $(this).parent().find(".page1").hide();
+      
       $(this).parent().find(".back").show();
+      $(this).parent().find(".page2").show();
     }
   });
   
   $(".Answer").on("click", ".back", function() {
   	$(this).hide();
-    $(this).parent().find("#fname").show();
-    $(this).parent().find("#lname").show();
-    $(this).parent().find("label[for=fname]").show();
-    $(this).parent().find("label[for=lname]").show();
+    $(this).parent().find(".page1").show();
+    $(this).parent().find(".page2").hide();
     $(this).parent().find(".next").prop("disabled", false).text("Next");
   });
 });
