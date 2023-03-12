@@ -51,6 +51,7 @@
         	display: inline-block;
             position: absolute;
 			margin-top: 20px;
+            margin-left: -120px;
             height: 300px;
             width: 200px;
 			background-color: white;
@@ -60,15 +61,16 @@
             border-radius: 12px;  
             color: black;
             box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+            transition: margin 1000ms ease-in-out;
 		}
         
         .Card:hover {
-        	background-color: blue;
-            transition: 0.3s;
+        	border: 2px solid blue;
         }
         
         .Card.card-bottom {
   			bottom: 0.5em;
+            
 		}
         
 
@@ -133,14 +135,14 @@ $(document).ready(function(){
     var cardtrans2 = 0.9 - 0.4*[ancestorcount-1];
 
     // Add the horizontal offset to the transform property
-    $(".Answer").append('<div class="Card" style="transform: translate(' + (cardtrans1 + horizontalOffset) + 'em, ' + cardtrans2 + 'em) rotate(' + carddegree + 'deg)">Ancestor ' + ancestorcount + '</div>');
+    $(".Answer").append('<div class="Card" style="transform: translate(' + (cardtrans1 + horizontalOffset) + 'em, ' + cardtrans2 + 'em) rotate(' + carddegree + 'deg)"><button>Ancestor ' + ancestorcount + '</button><br><label for="fname">First name:</label><br><input type="text" id="fname" name="fname"><br><label for="lname">Last name:</label><br><input type="text" id="lname" name="lname"><br></div>');
     
     // Increment the horizontal offset by the fixed amount
     horizontalOffset += offsetIncrement;
   });
   
-  $(".Answer").on("click", ".Card", function() {
-    $(this).toggleClass("card-bottom");
+  $(".Answer").on("click", "button", function() {
+    $(this).parent().toggleClass("card-bottom");
   });
 });
 </script>
