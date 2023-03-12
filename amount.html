@@ -137,7 +137,7 @@ $(document).ready(function(){
     var cardtrans2 = 0.9 - 0.4*[ancestorcount-1];
 
     // Add the horizontal offset to the transform property
-    $(".Answer").append('<div class="Card" style="transform: translate(' + (cardtrans1 + horizontalOffset) + 'em, ' + cardtrans2 + 'em) rotate(' + carddegree + 'deg)"><button class="move">Raise</button><br>Ancestor ' + ancestorcount + '<br><label for="fname">First name:</label><br><input type="text" id="fname" name="fname"><br><label for="lname">Last name:</label><br><input type="text" id="lname" name="lname"><br><br><button>Save</button></div>');
+    $(".Answer").append('<div class="Card" style="transform: translate(' + (cardtrans1 + horizontalOffset) + 'em, ' + cardtrans2 + 'em) rotate(' + carddegree + 'deg)"><button class="move">Raise</button><br><div class="name">Ancestor ' + ancestorcount + '</div><br><label for="fname">First name:</label><br><input type="text" id="fname" name="fname"><br><label for="lname">Last name:</label><br><input type="text" id="lname" name="lname"><br><br><button class="save">Save</button></div>');
     
     // Increment the horizontal offset by the fixed amount
     horizontalOffset += offsetIncrement;
@@ -146,8 +146,17 @@ $(document).ready(function(){
   $(".Answer").on("click", ".move", function() {
     $(this).text(function(i, text){
           return text === "Raise" ? "Lower" : "Raise";
-    })
+    });
     $(this).parent().toggleClass("card-bottom");
+  });
+  
+  $(".Answer").on("click", ".save", function() {
+    var firstName = $(this).parent().find("#fname").val();
+    var lastName = $(this).parent().find("#lname").val();
+    if (firstName !== "" && lastName !== "") {
+      $(this).parent().find(".name").html(firstName + " " + lastName);
+      $(this).prop("disabled", true).text("Saved");
+    }
   });
 });
 </script>
