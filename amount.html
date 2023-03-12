@@ -49,6 +49,7 @@
         
         .Card {
         	display: inline-block;
+            position: absolute;
 			margin-top: 20px;
             height: 300px;
             width: 200px;
@@ -57,9 +58,14 @@
             opacity: 0;
         	animation: fadeIn 0.5s ease-in-out forwards;
             border-radius: 12px;  
-            margin-right: 20px; /*add space between each card*/
             color: black;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 		}
+        
+        .Card:hover {
+        	background-color: blue;
+        }
+        
 
 		.Card:last-child {
   			margin-right: 0; /* remove space after the last card */
@@ -112,10 +118,30 @@
 <script>
 $(document).ready(function(){
   var ancestorcount = 0;
+  var horizontalOffset = 0; // Initialize the horizontal offset
+  var offsetIncrement = 4; // Define the amount to increment the offset by
+
   $(".Deck").click(function(){
     ancestorcount++;
-    $(".Answer").append('<div class="Card">Ancestor ' + ancestorcount + '</div>');
+    var carddegree = -42 + 9*[ancestorcount-1];
+    var cardtrans1 = 1.9 - 0.4*[ancestorcount-1];
+    var cardtrans2 = 0.9 - 0.4*[ancestorcount-1];
+
+    // Add the horizontal offset to the transform property
+    $(".Answer").append('<div class="Card" style="transform: translate(' + (cardtrans1 + horizontalOffset) + 'em, ' + cardtrans2 + 'em) rotate(' + carddegree + 'deg)">Ancestor ' + ancestorcount + '</div>');
+    
+    // Increment the horizontal offset by the fixed amount
+    horizontalOffset += offsetIncrement;
   });
+  
+    $(document).on({
+    mouseenter: function () {
+      $(this).css("transform", "translateY(-10px)");
+    },
+    mouseleave: function () {
+      $(this).css("transform", "translateY(0)");
+    }
+  }, ".Card");
 });
 </script>
 </html>
