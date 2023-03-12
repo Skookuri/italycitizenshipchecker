@@ -64,6 +64,8 @@
         
         .Card:hover {
         	background-color: blue;
+            bottom: 0.5em;
+            transition: 0.5s;
         }
         
 
@@ -119,7 +121,7 @@
 $(document).ready(function(){
   var ancestorcount = 0;
   var horizontalOffset = 0; // Initialize the horizontal offset
-  var offsetIncrement = 4; // Define the amount to increment the offset by
+  var offsetIncrement = 4.5; // Define the amount to increment the offset by
 
   $(".Deck").click(function(){
     ancestorcount++;
@@ -134,14 +136,7 @@ $(document).ready(function(){
     horizontalOffset += offsetIncrement;
   });
   
-    $(document).on({
-    mouseenter: function () {
-      $(this).css("transform", "translateY(-10px)");
-    },
-    mouseleave: function () {
-      $(this).css("transform", "translateY(0)");
-    }
-  }, ".Card");
+
 });
 </script>
 </html>
