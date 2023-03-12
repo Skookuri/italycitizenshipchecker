@@ -136,13 +136,14 @@ $(document).ready(function(){
   var offsetIncrement = 4.5; // Define the amount to increment the offset by
 
   $(".Deck").click(function(){
+    var pagecount = 1;
     ancestorcount++;
     var carddegree = -42 + 9*[ancestorcount-1]; //set limit so that if carddegree goes beyond 90, 
     var cardtrans1 = 1.9 - 0.4*[ancestorcount-1];
     var cardtrans2 = 0.9 - 0.4*[ancestorcount-1];
 
     // Add the horizontal offset to the transform property
-    var newCard = $('<div class="Card" style="transform: translate(' + (cardtrans1 + horizontalOffset) + 'em, ' + cardtrans2 + 'em) rotate(' + carddegree + 'deg)"><button class="move">Raise</button><br><div class="name">Ancestor ' + ancestorcount + '</div><br><div class="page1"><label for="fname">First name:</label><br><input type="text" id="fname" name="fname"><br><label for="lname">Last name:</label><br><input type="text" id="lname" name="lname"><br><br><label>Sex:</label><input type="radio" id="male" name="sex" value="Male"><label for="male">Male</label><input type="radio" id="female" name="sex" value="Female"><label for="female">Female</label></div><div class="page2"><label for="town">Birth Town/Providence/etc:</label><br><input type="text" id="town" name="town"><br><label for="country">Country:</label><br><input type="text" id="country" name="country"><br><label for="birthday">Birthday:</label><br><input type="date" id="birthday" name="birthday"><br><br><label for="naturalization">Naturalization Date:</label><br><input type="date" id="naturalization" name="naturalization"></div><br><br><button class="back">Back</button><button class="next">Next</button><br></div><');
+    var newCard = $('<div class="Card" style="transform: translate(' + (cardtrans1 + horizontalOffset) + 'em, ' + cardtrans2 + 'em) rotate(' + carddegree + 'deg)"><button class="move">Raise</button><span class="pagecount">Page ' + pagecount + '</span><br><div class="name">Ancestor ' + ancestorcount + '</div><br><div class="page1"><label for="fname">First name:</label><br><input type="text" id="fname" name="fname"><br><label for="lname">Last name:</label><br><input type="text" id="lname" name="lname"><br><br><label>Sex:</label><input type="radio" id="male" name="sex" value="Male"><label for="male">Male</label><input type="radio" id="female" name="sex" value="Female"><label for="female">Female</label></div><div class="page2"><label for="town">Birth Town/Providence/etc:</label><br><input type="text" id="town" name="town"><br><label for="country">Country:</label><br><input type="text" id="country" name="country"><br><label for="birthday">Birthday:</label><br><input type="date" id="birthday" name="birthday"><br><br><label for="naturalization">Naturalization Date:</label><br><input type="date" id="naturalization" name="naturalization"></div><br><br><button class="back">Back</button><button class="next">Next</button><br></div><');
     
     newCard.find(".back, .page2").hide(); // hide .back and .page2 for only the new card
     $(".Answer").append(newCard);
@@ -159,6 +160,11 @@ $(document).ready(function(){
   });
   
   $(".Answer").on("click", ".next", function() {
+    var pagecount = $(this).parent().find(".pagecount").text();
+    pagecount = parseInt(pagecount.replace("Page ", ""));
+    pagecount++;
+    
+    
     var firstName = $(this).parent().find("#fname").val();
     var lastName = $(this).parent().find("#lname").val();
     if (firstName !== "" && lastName !== "" && $('input[name="sex"]:checked').length) {
@@ -173,7 +179,8 @@ $(document).ready(function(){
       }
       
       $(this).parent().find(".name").html(firstName + " " + lastName + " " + sEx);
-      $(this).prop("disabled", true).text("Saved");
+      $(this).parent().find(".pagecount").html("Page " + pagecount);
+      $(this).prop("disabled", false).text("Next");
       $(this).parent().find(".page1").hide();
       
       $(this).parent().find(".back").show();
@@ -182,7 +189,12 @@ $(document).ready(function(){
   });
   
   $(".Answer").on("click", ".back", function() {
-  	$(this).hide();
+    var pagecount = $(this).parent().find(".pagecount").text();
+    pagecount = parseInt(pagecount.replace("Page ", ""));
+    pagecount--;
+    $(this).parent().find(".pagecount").html("Page " + pagecount);
+    
+    $(this).hide();
     $(this).parent().find(".page1").show();
     $(this).parent().find(".page2").hide();
     $(this).parent().find(".next").prop("disabled", false).text("Next");
