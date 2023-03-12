@@ -161,8 +161,18 @@ $(document).ready(function(){
   $(".Answer").on("click", ".next", function() {
     var firstName = $(this).parent().find("#fname").val();
     var lastName = $(this).parent().find("#lname").val();
-    if (firstName !== "" && lastName !== "") {
-      $(this).parent().find(".name").html(firstName + " " + lastName);
+    if (firstName !== "" && lastName !== "" && $('input[name="sex"]:checked').length) {
+      var selectedValue = $("input[name='sex']:checked").val();
+      
+      if (selectedValue === "Male") {
+   	 	var sEx = "♂️";
+      }
+      
+      if (selectedValue === "Female") {
+        var sEx = "♀️";
+      }
+      
+      $(this).parent().find(".name").html(firstName + " " + lastName + " " + sEx);
       $(this).prop("disabled", true).text("Saved");
       $(this).parent().find(".page1").hide();
       
