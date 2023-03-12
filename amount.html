@@ -12,7 +12,7 @@
     			font-style: normal;
 		}
 		body {
-			font-family: 'Restrain', sans-serif;
+			
 			background-color: black;
 			color: white;
 			display: flex;
@@ -26,6 +26,7 @@
 		}
 		
 		.Question {
+        	font-family: 'Restrain', sans-serif;
 			position: relative;
 			z-index: 1;
 			opacity: 0;
@@ -69,7 +70,7 @@
         }
         
         .Card.card-bottom {
-  			bottom: 0.5em;
+  			bottom: 2em;
             
 		}
         
@@ -98,6 +99,7 @@
 		}
         
         .Label {
+        	font-family: 'Restrain', sans-serif;
     		display: flex;
     		align-items: center;
     		justify-content: center;
@@ -130,12 +132,12 @@ $(document).ready(function(){
 
   $(".Deck").click(function(){
     ancestorcount++;
-    var carddegree = -42 + 9*[ancestorcount-1];
+    var carddegree = -42 + 9*[ancestorcount-1]; //set limit so that if carddegree goes beyond 90, 
     var cardtrans1 = 1.9 - 0.4*[ancestorcount-1];
     var cardtrans2 = 0.9 - 0.4*[ancestorcount-1];
 
     // Add the horizontal offset to the transform property
-    $(".Answer").append('<div class="Card" style="transform: translate(' + (cardtrans1 + horizontalOffset) + 'em, ' + cardtrans2 + 'em) rotate(' + carddegree + 'deg)">Ancestor ' + ancestorcount + ' <button>Raise</button><br><label for="fname">First name:</label><br><input type="text" id="fname" name="fname"><br><label for="lname">Last name:</label><br><input type="text" id="lname" name="lname"><br></div>');
+    $(".Answer").append('<div class="Card" style="transform: translate(' + (cardtrans1 + horizontalOffset) + 'em, ' + cardtrans2 + 'em) rotate(' + carddegree + 'deg)"><button>Raise</button><br>Ancestor ' + ancestorcount + '<br><label for="fname">First name:</label><br><input type="text" id="fname" name="fname"><br><label for="lname">Last name:</label><br><input type="text" id="lname" name="lname"><br></div>');
     
     // Increment the horizontal offset by the fixed amount
     horizontalOffset += offsetIncrement;
